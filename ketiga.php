@@ -1,86 +1,80 @@
 <?php
 
-class Lingkaran
-{
-    const PHI = 3.14;
+class Author {
+    public $name;
+    public $description;
 
-    public $jari_jari;
-
-    public function __construct($jari_jari) {
-        $this->jari_jari = $jari_jari;
-    }
-
-    public function luas() : float {
-        return self::PHI * pow($this->jari_jari, 2);
-    }
-
-    public function keliling() : float {
-        return 2 * self::PHI * $this->jari_jari;
+    public function showType() {
+        // Implementasi untuk menentukan jenis penulis
+        // Misalnya, berdasarkan kategori buku yang ditulis
+        return "Fiksi"; // Contoh pengembalian
     }
 }
 
-class Bola
-{
-    const PHI = 3.14;
+class Publisher {
+    public $name;
+    public $address;
+    private $phone;
 
-    public $jari_jari;
-
-    public function __construct($jari_jari) {
-        $this->jari_jari = $jari_jari;
+    public function __construct($name, $address, $phone) {
+        $this->name = $name;
+        $this->address = $address;
+        $this->phone = $phone;
     }
 
-    public function volume() : float {
-        return (4/3) * self::PHI * pow($this->jari_jari, 3);
-    }
-}
-
-class Tabung
-{
-    const PHI = 3.14;
-
-    public $jari_jari;
-    public $tinggi;
-
-    public function __construct($jari_jari, $tinggi) {
-        $this->jari_jari = $jari_jari;
-        $this->tinggi = $tinggi;
+    public function setPhone($phone) {
+        $this->phone = $phone;
     }
 
-    public function volume() : float {
-        return self::PHI * pow($this->jari_jari, 2) * $this->tinggi;
+    public function getPhone() {
+        return $this->phone;
     }
 }
 
-class Kerucut
-{
-    const PHI = 3.14;
+class Book {
+    public $ISBN;
+    public $title;
+    public $description;
+    public $category;
+    public $language;
+    public $numberOfPage;
+    public $author;
+    public $publisher;
 
-    public $jari_jari;
-    public $tinggi;
-
-    public function __construct($jari_jari, $tinggi) {
-        $this->jari_jari = $jari_jari;
-        $this->tinggi = $tinggi;
+    public function __construct($ISBN, $title, $description, $category, $language, $numberOfPage, Author $author, Publisher $publisher) {
+        $this->ISBN = $ISBN;
+        $this->title = $title;
+        // ... (isi atribut lainnya)
+        $this->author = $author;
+        $this->publisher = $publisher;
     }
 
-    public function volume() : float {
-        return (1/3) * self::PHI * pow($this->jari_jari, 2) * $this->tinggi;
+    public function showAll() {
+        // Mengembalikan semua informasi buku dalam bentuk array atau objek
+        return [
+            'ISBN' => $this->ISBN,
+            'title' => $this->title,
+            // ...
+        ];
+    }
+
+    public function detail($ISBN) {
+        // Mengembalikan detail buku berdasarkan ISBN
+        if ($this->ISBN == $ISBN) {
+            return $this->showAll();
+        } else {
+            return null;
+        }
     }
 }
 
-// Membuat objek lingkaran dengan jari-jari 5 cm
-$lingkaran = new Lingkaran(5);
-echo "Luas lingkaran: " . $lingkaran->luas() . " cm²" . PHP_EOL;
-echo "Keliling lingkaran: " . $lingkaran->keliling() . " cm" . PHP_EOL;
+// Contoh penggunaan
+$author1 = new Author();
+$author1->name = "J.K. Rowling";
+$author1->description = "Penulis terkenal seri Harry Potter";
 
-// Membuat objek bola dengan jari-jari 3 cm
-$bola = new Bola(3);
-echo "Volume bola: " . $bola->volume() . " cm³" . PHP_EOL;
+$publisher1 = new Publisher("Penerbit A", "Jakarta", "0211234567");
 
-// Membuat objek tabung dengan jari-jari 2 cm dan tinggi 8 cm
-$tabung = new Tabung(2, 8);
-echo "Volume tabung: " . $tabung->volume() . " cm³" . PHP_EOL;
+$book1 = new Book(12345, "Harry Potter and the Sorcerer's Stone", "Petualangan seorang anak penyihir", "Fantasi", "English", 309, $author1, $publisher1);
 
-// Membuat objek kerucut dengan jari-jari 4 cm dan tinggi 10 cm
-$kerucut = new Kerucut(4, 10);
-echo "Volume kerucut: " . $kerucut->volume() . " cm³" . PHP_EOL;
+print_r($book1->showAll());
