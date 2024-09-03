@@ -68,19 +68,19 @@ class Kerucut
     }
 }
 
-// Membuat objek nasi_tumpeng
-$nasi_tumpeng = new Kerucut(4, 10);
-echo "Volume nasi tumpeng adalah: " . $nasi_tumpeng->volume() . " cm³" . PHP_EOL;
-
-// Membuat objek lingkaran
+// Membuat objek lingkaran dengan jari-jari 5 cm
 $lingkaran = new Lingkaran(5);
 echo "Luas lingkaran: " . $lingkaran->luas() . " cm²" . PHP_EOL;
 echo "Keliling lingkaran: " . $lingkaran->keliling() . " cm" . PHP_EOL;
 
-// Membuat objek bola
+// Membuat objek bola dengan jari-jari 3 cm
 $bola = new Bola(3);
 echo "Volume bola: " . $bola->volume() . " cm³" . PHP_EOL;
 
-// Membuat objek tabung
+// Membuat objek tabung dengan jari-jari 2 cm dan tinggi 8 cm
 $tabung = new Tabung(2, 8);
 echo "Volume tabung: " . $tabung->volume() . " cm³" . PHP_EOL;
+
+// Membuat objek kerucut dengan jari-jari 4 cm dan tinggi 10 cm
+$kerucut = new Kerucut(4, 10);
+echo "Volume kerucut: " . $kerucut->volume() . " cm³" . PHP_EOL;
