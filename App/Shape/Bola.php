@@ -1,5 +1,6 @@
 <?php
 namespace App\Shape;
+
 class Bola
 {
     public $jari_jari;

@@ -1,5 +1,6 @@
 <?php
 namespace App\Shape;
+
 class Kerucut
 {
     public $jari_jari;
